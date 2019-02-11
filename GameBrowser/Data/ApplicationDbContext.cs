@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SimbirSoftDD_c_Study.Models;
+using GameBrowser.Models;
 
 namespace GameBrowser.Data
 {
