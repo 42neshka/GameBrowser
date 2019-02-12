@@ -16,10 +16,10 @@
                 @Html.DisplayNameFor(model => model.No)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RecordID)
+                @Html.DisplayNameFor(model => model.Record)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Score)
+                @Html.DisplayNameFor(model => model.NickName)
             </th>
             <th></th>
         </tr>
@@ -31,15 +31,15 @@
                 @Html.DisplayFor(modelItem => item.No)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RecordID)
+                @Html.DisplayFor(modelItem => item.Record)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Score)
+                @Html.DisplayFor(modelItem => item.NickName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.NickName">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.NickName">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.NickName">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Score">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Score">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Score">Delete</a>
             </td>
         </tr>
 }

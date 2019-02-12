@@ -18,21 +18,21 @@
             @Html.DisplayFor(model => model.No)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RecordID)
+            @Html.DisplayNameFor(model => model.Record)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RecordID)
+            @Html.DisplayFor(model => model.Record)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Score)
+            @Html.DisplayNameFor(model => model.NickName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Score)
+            @Html.DisplayFor(model => model.NickName)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="NickName" />
+        <input type="hidden" asp-for="Score" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

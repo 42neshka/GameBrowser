@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GameBrowser.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using GameBrowser.Models;
 
 namespace GameBrowser.Data
 {
@@ -15,9 +15,10 @@ namespace GameBrowser.Data
         }
 
         public DbSet<Profile> Profiles { get; internal set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Profile>().HasKey(m => m.NickName);
+            builder.Entity<Profile>().HasKey(m => m.Score);
             base.OnModelCreating(builder);
         }
     }

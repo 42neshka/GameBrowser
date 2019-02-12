@@ -10,11 +10,11 @@ using GameBrowser.Models;
 
 namespace GameBrowser.Controllers
 {
-    public class ProfilesController : Controller
+    public class ProfileController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ProfilesController(ApplicationDbContext context)
+        public ProfileController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace GameBrowser.Controllers
         }
 
         // GET: Profiles/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -34,7 +34,7 @@ namespace GameBrowser.Controllers
             }
 
             var profile = await _context.Profiles
-                .FirstOrDefaultAsync(m => m.NickName == id);
+                .FirstOrDefaultAsync(m => m.Score == id);
             if (profile == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace GameBrowser.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("No,RecordID,NickName,Score")] Profile profile)
+        public async Task<IActionResult> Create([Bind("No,Record,NickName,Score")] Profile profile)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace GameBrowser.Controllers
         }
 
         // GET: Profiles/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -86,9 +86,9 @@ namespace GameBrowser.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("No,RecordID,NickName,Score")] Profile profile)
+        public async Task<IActionResult> Edit(int id, [Bind("No,Record,NickName,Score")] Profile profile)
         {
-            if (id != profile.NickName)
+            if (id != profile.Score)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace GameBrowser.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProfileExists(profile.NickName))
+                    if (!ProfileExists(profile.Score))
                     {
                         return NotFound();
                     }
@@ -117,7 +117,7 @@ namespace GameBrowser.Controllers
         }
 
         // GET: Profiles/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -125,7 +125,7 @@ namespace GameBrowser.Controllers
             }
 
             var profile = await _context.Profiles
-                .FirstOrDefaultAsync(m => m.NickName == id);
+                .FirstOrDefaultAsync(m => m.Score == id);
             if (profile == null)
             {
                 return NotFound();
@@ -137,7 +137,7 @@ namespace GameBrowser.Controllers
         // POST: Profiles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var profile = await _context.Profiles.FindAsync(id);
             _context.Profiles.Remove(profile);
@@ -145,9 +145,9 @@ namespace GameBrowser.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProfileExists(string id)
+        private bool ProfileExists(int id)
         {
-            return _context.Profiles.Any(e => e.NickName == id);
+            return _context.Profiles.Any(e => e.Score == id);
         }
     }
 }

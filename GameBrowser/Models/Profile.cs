@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,9 +9,20 @@ namespace GameBrowser.Models
 {
     public class Profile
     {
-        public int No { get; set; }
-        public int RecordID { get; set; }
+        public int No { get; }
+
+        [Display(Name = "Record")]
+        [Required]
+        public int Record { get; set; }
+
+        [Display(Name = "Nickname")]
+        [Required]
         public string NickName { get; set; }
+
+        [Display(Name = "Score")]
+        [Required]
         public int Score { get; set; }
+
     }
+
 }

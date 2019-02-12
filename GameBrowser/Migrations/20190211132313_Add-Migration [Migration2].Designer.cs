@@ -3,15 +3,17 @@ using System;
 using GameBrowser.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace GameBrowser.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190211132313_Add-Migration [Migration2]")]
+    partial class AddMigrationMigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,10 +26,9 @@ namespace GameBrowser.Migrations
                     b.Property<int>("Score")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("NickName")
-                        .IsRequired();
+                    b.Property<string>("NickName");
 
-                    b.Property<Guid>("No");
+                    b.Property<int>("No");
 
                     b.Property<int>("Record");
 
