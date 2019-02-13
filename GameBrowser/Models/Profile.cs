@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,7 +10,8 @@ namespace GameBrowser.Models
 {
     public class Profile
     {
-        public int No { get; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int No { get; set; }
 
         [Display(Name = "Record")]
         [Required]
