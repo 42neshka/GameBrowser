@@ -15,14 +15,17 @@ namespace GameBrowser.Models
 
         [Display(Name = "Record")]
         [Required]
+        [Range(1, 5000, ErrorMessage = "Invalid value")]
         public int Record { get; set; }
 
         [Display(Name = "Nickname")]
         [Required]
+        [StringLength (15, MinimumLength = 3, ErrorMessage = "Invalid value")]
         public string NickName { get; set; }
 
         [Display(Name = "Score")]
         [Required]
+
         public int Score { get; set; }
 
     }
