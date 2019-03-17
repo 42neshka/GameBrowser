@@ -21,9 +21,28 @@ namespace GameBrowser.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(int? id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (id == 404)
+            {
+                return View("Pagenotfound");
+            }
+
+             
+            else if (id == 500)
+            { 
+                return View("InternalServerError");
+            }
+
+            else if (id == 403)
+            {
+                return View("Forbidden");
+            }
+
+            else
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
         }
     }
 }

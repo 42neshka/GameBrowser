@@ -40,7 +40,7 @@ namespace GameBrowser
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -67,7 +67,6 @@ namespace GameBrowser
             var logger = loggerFactory.CreateLogger("FileLogger");
             if (env.IsDevelopment())
             {
-                logger.LogInformation("In Development environment");
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
@@ -78,6 +77,7 @@ namespace GameBrowser
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithRedirects("Home/Error/{0}");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
