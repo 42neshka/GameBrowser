@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using GameBrowser.Models;
 
 namespace GameBrowser
 {
@@ -26,6 +27,7 @@ namespace GameBrowser
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
+                    
                     context.Database.Migrate();
                     ProfileInitializer.Initialize(context);
                 }
